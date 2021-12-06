@@ -15,7 +15,7 @@ let colecao_signos = [
 
 const retorna_signo = (signos, data) => {
 
-    for(const signo of signos){
+    for (const signo of signos) {
         let ano = data.getFullYear();
 
         let data_inicio_signo =
@@ -23,13 +23,22 @@ const retorna_signo = (signos, data) => {
         let data_fim_signo =
             new Date(ano + "-" + signo["DataFim"] + " 23:59:59");
 
-        if(data >= data_inicio_signo && data <= data_fim_signo ) {
-            return signo["Nome"];
+        let tipo_comparacao = signo['DataInicio'] == "12-22" ? "or" : "and";
+
+        if (tipo_comparacao == "and") {
+            if (data >= data_inicio_signo && data <= data_fim_signo) {
+                return signo["Nome"];
+            }
+
+        } else if (tipo_comparacao = "or") {
+            if (data >= data_inicio_signo || data <= data_fim_signo) {
+                return signo["Nome"];
+            }
         }
     }
 }
 
-let data_app = new Date("2020-10-07 00:00:00");
+let data_app = new Date("2020-12-23 00:00:00");
 
 const nome_signo = retorna_signo(colecao_signos, data_app);
 

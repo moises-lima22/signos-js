@@ -12,3 +12,12 @@ let colecao_signos = [
     {"Nome": "Sagitário", "DataInicio": "11-22","DataFim":"12-21"},
     {"Nome": "Capricórnio", "DataInicio": "12-22","DataFim":"01-19"}
 ];
+
+const retorna_signo = (signos) => {
+    return signos[0]['Nome'];
+
+}
+
+const nome_signo = retorna_signo(colecao_signos);
+
+console.log(nome_signo)
